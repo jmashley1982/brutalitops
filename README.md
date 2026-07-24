@@ -29,7 +29,8 @@ year) are all inline, nothing else to touch.
 Things you'll probably want to fill in once you have them:
 - `booking@brutalitops.com` / `@brutalitops` Instagram handle in the Contact section — placeholders, set up the real inbox/handle or swap the links.
 - The "Coming Soon" Spotify/Bandcamp/YouTube buttons in `#listen` — replace `href="#"` with real URLs and drop the `soon` class once you have music up.
-- `og:image` meta tag points at `/images/og-band.jpg` — drop a real band photo in `images/` at that filename for link previews (socials, iMessage, etc. use this).
 
-The hero skull is a hand-drawn inline SVG (no image file), so it stays crisp at
-any size and needs no asset — swap it for the real logo/photo once it's in `images/`.
+`images/logo.png` is the full logo artwork (skull + the band name worked into
+the spiky lettering around it) — displayed with a CSS `invert()` so its white
+background reads as transparent against the black page. `images/hero-band.png`
+is the live photo used both in the hero section and as the `og:image` link-preview.
