@@ -10,7 +10,7 @@
 <meta property="og:description" content="Extremely heavy. Extremely stupid. Extinct since birth." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://brutalitops.com" />
-<meta property="og:image" content="/images/og-band.jpg" />
+<meta property="og:image" content="/images/hero-band.png" />
 <meta name="theme-color" content="#050403" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%80%3C/text%3E%3C/svg%3E" />
@@ -125,24 +125,39 @@
   }
 
   .skull-wrap {
-    width: min(58vw, 320px);
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 18px rgba(178,9,26,0.45)) drop-shadow(0 0 30px rgba(18,163,160,0.25));
+    width: min(85vw, 460px);
+    margin-bottom: 0.5rem;
     animation: floatSkull 6s ease-in-out infinite;
+  }
+  .skull-wrap img {
+    width: 100%;
+    display: block;
+    filter: invert(1);
   }
   @keyframes floatSkull {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-8px) rotate(-1deg); }
   }
 
-  .drip { animation: drip 4.5s ease-in infinite; transform-origin: top; }
-  .drip.d2 { animation-delay: 1.1s; }
-  .drip.d3 { animation-delay: 2.3s; }
-  @keyframes drip {
-    0% { transform: scaleY(0.3); opacity: 0; }
-    15% { opacity: 1; }
-    70% { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(1.15); opacity: 0; }
+  /* ---------- BAND PHOTO ---------- */
+  .band-photo {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+  }
+  .band-photo img {
+    width: 100%;
+    display: block;
+    filter: contrast(1.08) saturate(1.15);
+  }
+  .band-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5,4,3,0) 82%, var(--black) 100%);
+    pointer-events: none;
   }
 
   h1.title {
@@ -337,28 +352,7 @@
 
 <header class="hero">
   <div class="skull-wrap">
-    <svg viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--bone)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
-      <!-- horns -->
-      <path d="M100 8 L92 62 L108 62 Z" fill="var(--bone)" stroke="none"/>
-      <path d="M46 30 Q30 55 34 92 L54 78 Q52 52 46 30Z" fill="var(--bone)" stroke="none"/>
-      <path d="M154 30 Q170 55 166 92 L146 78 Q148 52 154 30Z" fill="var(--bone)" stroke="none"/>
-      <!-- blood drips -->
-      <rect class="drip d1" x="98" y="60" width="4" height="34" fill="var(--blood-bright)" stroke="none"/>
-      <rect class="drip d2" x="50" y="76" width="4" height="30" fill="var(--blood-bright)" stroke="none"/>
-      <rect class="drip d3" x="146" y="76" width="4" height="30" fill="var(--blood-bright)" stroke="none"/>
-      <!-- frill -->
-      <path d="M20 95 Q100 30 180 95 L168 150 Q100 100 32 150 Z" fill="var(--ink)" stroke="var(--bone-dim)" stroke-width="1.5"/>
-      <path d="M40 100 L40 130 M65 88 L65 122 M100 82 L100 118 M135 88 L135 122 M160 100 L160 130" stroke="var(--bone-dim)" stroke-width="1"/>
-      <!-- skull dome -->
-      <path d="M64 105 Q100 78 136 105 L140 150 Q100 178 60 150 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
-      <!-- eye sockets -->
-      <ellipse cx="82" cy="122" rx="10" ry="13" fill="var(--black)" stroke="none"/>
-      <ellipse cx="118" cy="122" rx="10" ry="13" fill="var(--black)" stroke="none"/>
-      <!-- nose horn -->
-      <path d="M94 138 L100 118 L106 138 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="1.5"/>
-      <!-- beak / jaw -->
-      <path d="M84 152 Q100 172 116 152 L112 162 Q100 170 88 162 Z" fill="var(--ink)" stroke="var(--bone-dim)" stroke-width="1.5"/>
-    </svg>
+    <img src="images/logo.png" alt="Brutalitops horned skull logo" />
   </div>
 
   <h1 class="title">BRUTALITOPS</h1>
@@ -367,6 +361,10 @@
 
   <a class="cta" href="#about">Enter The Pit</a>
 </header>
+
+<div class="band-photo">
+  <img src="images/hero-band.png" alt="Brutalitops live in their horned skull masks" />
+</div>
 
 <section id="about">
   <h2 class="head">The Herd</h2>
