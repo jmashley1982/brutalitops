@@ -2,18 +2,24 @@
 
 A single static HTML file, no build step, no backend.
 
-## Deploying to brutalitops.com (Cloudflare Pages)
+## Deploying to brutalitops.com (Cloudflare Workers)
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → this repo (`jmashley1982/brutalitops`).
-2. Build settings:
-   - Framework preset: `None`
-   - Build command: *(leave empty)*
-   - Build output directory: `/` (repo root)
-3. Deploy. Point it at your `main` branch for production.
-4. **Custom domain**: in the new Pages project → **Custom domains** → add
-   `brutalitops.com` (and `www.brutalitops.com` if you want it). Since the domain
-   is already on Cloudflare, it just adds the DNS record for you — no registrar
-   changes needed.
+This is a Worker with static assets (`wrangler.jsonc`), same pattern as a
+regular Workers site — no build step, it just serves the files in this repo
+directly. A Worker named `brutalitops` already exists in the Cloudflare
+account; connect it to this repo once and every push to `main` deploys:
+
+1. Cloudflare dashboard → **Workers & Pages** → **brutalitops** (the existing
+   worker) → **Settings** → **Build** (or **Git integration**) → connect it to
+   `jmashley1982/brutalitops`, branch `main`. No build command needed —
+   Wrangler picks up `wrangler.jsonc` and deploys the repo root as-is.
+   - If it's not already connected, **Create** → **Workers** → **Connect to
+     Git** → this repo works the same way; just make sure the Worker name
+     stays `brutalitops` to match what's already provisioned.
+2. **Custom domain**: on the `brutalitops` worker → **Settings** → **Domains &
+   Routes** → add `brutalitops.com` (and `www.brutalitops.com` if you want
+   it). Since the domain's already on Cloudflare, this just adds the DNS
+   record — no registrar changes needed.
 
 ## Editing content
 
