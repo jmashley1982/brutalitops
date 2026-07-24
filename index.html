@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BRUTALITOPS — Extremely Heavy. Extremely Stupid.</title>
+<meta name="description" content="Brutalitops: five idiots in dinosaur skulls playing the heaviest, dumbest music since the Cretaceous. Extremely brutal. Extremely weird." />
+
+<meta property="og:title" content="BRUTALITOPS" />
+<meta property="og:description" content="Extremely heavy. Extremely stupid. Extinct since birth." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://brutalitops.com" />
+<meta property="og:image" content="/images/og-band.jpg" />
+<meta name="theme-color" content="#050403" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%80%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Metal+Mania&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bone: #e7dfc6;
+    --bone-dim: #a89f88;
+    --blood: #b2091a;
+    --blood-bright: #ff2138;
+    --teal: #12a3a0;
+    --teal-dim: #0d3b3a;
+    --black: #050403;
+    --ink: #0b0a08;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--bone);
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* grime / grain overlay */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+  }
+
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0.18) 1px,
+      rgba(0,0,0,0) 3px
+    );
+    opacity: 0.5;
+  }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 997;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%);
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.9rem 1rem;
+    background: linear-gradient(to bottom, rgba(5,4,3,0.96), rgba(5,4,3,0.55));
+    border-bottom: 1px solid rgba(178,9,26,0.4);
+    backdrop-filter: blur(2px);
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--bone-dim);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.15s, text-shadow 0.15s;
+  }
+  nav a:hover { color: var(--blood-bright); text-shadow: 0 0 8px var(--blood); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.25rem 3rem;
+    background:
+      radial-gradient(ellipse 60% 45% at 22% 30%, rgba(18,163,160,0.28), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 80% 65%, rgba(178,9,26,0.30), transparent 60%),
+      var(--black);
+    max-width: none;
+  }
+
+  .skull-wrap {
+    width: min(58vw, 320px);
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 18px rgba(178,9,26,0.45)) drop-shadow(0 0 30px rgba(18,163,160,0.25));
+    animation: floatSkull 6s ease-in-out infinite;
+  }
+  @keyframes floatSkull {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-1deg); }
+  }
+
+  .drip { animation: drip 4.5s ease-in infinite; transform-origin: top; }
+  .drip.d2 { animation-delay: 1.1s; }
+  .drip.d3 { animation-delay: 2.3s; }
+  @keyframes drip {
+    0% { transform: scaleY(0.3); opacity: 0; }
+    15% { opacity: 1; }
+    70% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(1.15); opacity: 0; }
+  }
+
+  h1.title {
+    font-family: 'Nosifer', system-ui, sans-serif;
+    font-size: clamp(2.4rem, 11vw, 6.2rem);
+    line-height: 0.95;
+    margin: 0;
+    color: var(--blood-bright);
+    text-shadow:
+      0 0 6px var(--blood),
+      0 0 22px rgba(178,9,26,0.65),
+      3px 3px 0 #1a0000;
+    letter-spacing: 0.02em;
+    animation: flicker 7s linear infinite;
+  }
+  @keyframes flicker {
+    0%, 92%, 100% { opacity: 1; }
+    93% { opacity: 0.55; }
+    94% { opacity: 1; }
+    95% { opacity: 0.4; }
+    96% { opacity: 1; }
+  }
+
+  .tagline {
+    font-family: 'Metal Mania', system-ui, cursive;
+    color: var(--bone);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin: 0.75rem 0 0.25rem;
+    letter-spacing: 0.04em;
+  }
+
+  .subtag {
+    color: var(--teal);
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .cta {
+    margin-top: 2.5rem;
+    display: inline-block;
+    padding: 0.9rem 2.1rem;
+    border: 2px solid var(--blood-bright);
+    color: var(--blood-bright);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    position: relative;
+    transition: color 0.2s, background 0.2s;
+  }
+  .cta:hover {
+    color: var(--black);
+    background: var(--blood-bright);
+    box-shadow: 0 0 25px rgba(255,33,56,0.6);
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  h2.head {
+    font-family: 'Metal Mania', system-ui, cursive;
+    color: var(--bone);
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    text-align: center;
+    margin: 0 0 0.4rem;
+    text-shadow: 0 0 12px rgba(18,163,160,0.45);
+  }
+  .head-rule {
+    width: 60px;
+    height: 3px;
+    background: var(--blood);
+    margin: 0 auto 2.5rem;
+    box-shadow: 0 0 10px var(--blood);
+  }
+
+  .lede {
+    text-align: center;
+    color: var(--bone-dim);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .lede strong { color: var(--bone); }
+
+  /* ---------- GENRE PILLS ---------- */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+    margin-top: 2.2rem;
+  }
+  .pill {
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    background: rgba(18,163,160,0.06);
+  }
+
+  /* ---------- LISTEN ---------- */
+  .platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .plat {
+    border: 1px solid rgba(231,223,198,0.3);
+    color: var(--bone-dim);
+    text-decoration: none;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .plat:hover { border-color: var(--blood-bright); color: var(--blood-bright); }
+  .plat.soon { opacity: 0.45; pointer-events: none; }
+
+  /* ---------- SHOWS ---------- */
+  .shows-box {
+    border: 1px dashed rgba(231,223,198,0.35);
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+    color: var(--bone-dim);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .contact-grid a {
+    color: var(--bone);
+    text-decoration: none;
+    border-bottom: 1px solid var(--blood);
+    padding-bottom: 2px;
+  }
+  .contact-grid a:hover { color: var(--blood-bright); }
+  .contact-label {
+    display: block;
+    color: var(--teal);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem 4rem;
+    color: rgba(168,159,136,0.5);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<svg class="grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#listen">Listen</a>
+  <a href="#shows">Shows</a>
+  <a href="#merch">Merch</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <div class="skull-wrap">
+    <svg viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--bone)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <!-- horns -->
+      <path d="M100 8 L92 62 L108 62 Z" fill="var(--bone)" stroke="none"/>
+      <path d="M46 30 Q30 55 34 92 L54 78 Q52 52 46 30Z" fill="var(--bone)" stroke="none"/>
+      <path d="M154 30 Q170 55 166 92 L146 78 Q148 52 154 30Z" fill="var(--bone)" stroke="none"/>
+      <!-- blood drips -->
+      <rect class="drip d1" x="98" y="60" width="4" height="34" fill="var(--blood-bright)" stroke="none"/>
+      <rect class="drip d2" x="50" y="76" width="4" height="30" fill="var(--blood-bright)" stroke="none"/>
+      <rect class="drip d3" x="146" y="76" width="4" height="30" fill="var(--blood-bright)" stroke="none"/>
+      <!-- frill -->
+      <path d="M20 95 Q100 30 180 95 L168 150 Q100 100 32 150 Z" fill="var(--ink)" stroke="var(--bone-dim)" stroke-width="1.5"/>
+      <path d="M40 100 L40 130 M65 88 L65 122 M100 82 L100 118 M135 88 L135 122 M160 100 L160 130" stroke="var(--bone-dim)" stroke-width="1"/>
+      <!-- skull dome -->
+      <path d="M64 105 Q100 78 136 105 L140 150 Q100 178 60 150 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="2"/>
+      <!-- eye sockets -->
+      <ellipse cx="82" cy="122" rx="10" ry="13" fill="var(--black)" stroke="none"/>
+      <ellipse cx="118" cy="122" rx="10" ry="13" fill="var(--black)" stroke="none"/>
+      <!-- nose horn -->
+      <path d="M94 138 L100 118 L106 138 Z" fill="var(--bone)" stroke="var(--ink)" stroke-width="1.5"/>
+      <!-- beak / jaw -->
+      <path d="M84 152 Q100 172 116 152 L112 162 Q100 170 88 162 Z" fill="var(--ink)" stroke="var(--bone-dim)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h1 class="title">BRUTALITOPS</h1>
+  <p class="tagline">Three Horns. Zero Chill.</p>
+  <p class="subtag">Extremely Heavy — Extremely Stupid — Extinct Since Birth</p>
+
+  <a class="cta" href="#about">Enter The Pit</a>
+</header>
+
+<section id="about">
+  <h2 class="head">The Herd</h2>
+  <div class="head-rule"></div>
+  <p class="lede">
+    <strong>Brutalitops</strong> is five idiots in dinosaur skulls playing the heaviest,
+    dumbest, most unnecessarily technical music to walk out of the Cretaceous.
+    We are extremely brutal. We are extremely weird. We do not fully understand
+    it either. Bring earplugs. Bring nothing else — we don't have merch yet.
+  </p>
+  <div class="pills">
+    <span class="pill">Brutal Death Herbivore</span>
+    <span class="pill">Blast-Beat Paleontology</span>
+    <span class="pill">Frill-Grind</span>
+    <span class="pill">Sludgeosaur</span>
+    <span class="pill">Cretaceous Slam</span>
+  </div>
+</section>
+
+<section id="listen">
+  <h2 class="head">Listen (At Your Own Risk)</h2>
+  <div class="head-rule"></div>
+  <p class="lede">Nothing is uploaded yet. That's not a metaphor, we just haven't done it.</p>
+  <div class="platforms">
+    <a class="plat soon" href="#">Spotify — Coming Soon</a>
+    <a class="plat soon" href="#">Bandcamp — Coming Soon</a>
+    <a class="plat soon" href="#">YouTube — Coming Soon</a>
+  </div>
+</section>
+
+<section id="shows">
+  <h2 class="head">Shows</h2>
+  <div class="head-rule"></div>
+  <div class="shows-box">
+    NO DATES BOOKED.<br/>
+    NO, WE DON'T KNOW WHEN EITHER.<br/>
+    FOLLOW US SO YOU FIND OUT THE SAME TIME WE DO.
+  </div>
+</section>
+
+<section id="merch">
+  <h2 class="head">Merch</h2>
+  <div class="head-rule"></div>
+  <p class="lede">
+    Official skull masks: <strong>not for sale</strong> — we need those to play the show.
+    Shirts: someday, maybe, if someone in the band learns Photoshop.
+  </p>
+</section>
+
+<section id="contact">
+  <h2 class="head">Contact</h2>
+  <div class="head-rule"></div>
+  <div class="contact-grid">
+    <div>
+      <span class="contact-label">Booking</span>
+      <a href="mailto:booking@brutalitops.com">booking@brutalitops.com</a>
+    </div>
+    <div>
+      <span class="contact-label">Instagram</span>
+      <a href="https://instagram.com/brutalitops" target="_blank" rel="noopener">@brutalitops</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> BRUTALITOPS. ALL RIGHTS REVERSED.<br/>
+  NO DINOSAURS WERE HARMED — THEY WERE ALREADY EXTINCT.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
