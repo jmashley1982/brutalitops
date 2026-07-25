@@ -146,10 +146,18 @@
     line-height: 0;
     position: relative;
   }
-  .band-photo img {
+  .band-photo img,
+  .band-photo video {
     width: 100%;
     display: block;
     filter: contrast(1.08) saturate(1.15);
+  }
+  .band-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 75% 70% at center, rgba(0,0,0,0) 45%, rgba(5,4,3,0.85) 100%);
+    pointer-events: none;
   }
   .band-photo::after {
     content: '';
@@ -426,7 +434,9 @@
 </header>
 
 <div class="band-photo">
-  <img src="images/hero-band.png" alt="Brutalitops live in their horned skull masks" />
+  <video autoplay muted loop playsinline poster="images/hero-poster.jpg">
+    <source src="images/hero-video.mp4" type="video/mp4" />
+  </video>
 </div>
 
 <section id="about">
