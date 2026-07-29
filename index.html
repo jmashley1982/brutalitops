@@ -319,12 +319,19 @@
   }
 
   /* ---------- LISTEN ---------- */
+  .video-embeds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
   .video-embed {
     position: relative;
     width: 100%;
-    max-width: 640px;
+    max-width: 460px;
+    flex: 1 1 400px;
     aspect-ratio: 16 / 9;
-    margin: 2rem auto 0;
     border: 1px solid rgba(178,9,26,0.4);
     box-shadow: 0 0 25px rgba(178,9,26,0.2);
   }
@@ -520,8 +527,13 @@
   <h2 class="head">Listen (At Your Own Risk)</h2>
   <div class="head-rule"></div>
   <p class="lede">Debut EP: not out yet. Streaming: nowhere, yet. There is, somehow, a YouTube channel.</p>
-  <div class="video-embed">
-    <iframe src="https://www.youtube.com/embed/1_1flgAIWXo" title="Brutalitops music video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="video-embeds">
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/1_1flgAIWXo" title="Brutalitops music video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/HcXrRFH_HXY" title="Brutalitops music video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
   <div class="platforms">
     <a class="plat" href="https://www.youtube.com/@BRUTALITOPSMETAL" target="_blank" rel="noopener">YouTube</a>
